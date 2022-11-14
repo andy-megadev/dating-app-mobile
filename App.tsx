@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
 
 // global scope prevents from calling this method too late
@@ -33,7 +33,7 @@ const App = () => {
     return null;
   }
 
-  return <View onLayout={onLayoutRootView} />;
+  return <SafeAreaProvider onLayout={onLayoutRootView}></SafeAreaProvider>;
 };
 
 export default App;
