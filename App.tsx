@@ -1,6 +1,10 @@
+import 'react-native-gesture-handler';
+
 import React, { useCallback, useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
+
+import AppNavigation from './src/navigation';
 
 // global scope prevents from calling this method too late
 SplashScreen.preventAutoHideAsync();
@@ -33,7 +37,11 @@ const App = () => {
     return null;
   }
 
-  return <SafeAreaProvider onLayout={onLayoutRootView}></SafeAreaProvider>;
+  return (
+    <SafeAreaProvider onLayout={onLayoutRootView}>
+      <AppNavigation />
+    </SafeAreaProvider>
+  );
 };
 
 export default App;
