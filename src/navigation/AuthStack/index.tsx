@@ -1,4 +1,8 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import React, { useState } from 'react';
+import {
+  createStackNavigator,
+  StackNavigationOptions
+} from '@react-navigation/stack';
 
 import LoginScreen from '../../screens/auth/LoginScreen';
 import RegisterScreen from '../../screens/auth/RegisterScreen';
@@ -8,8 +12,22 @@ import { IAuthStackParamList, Screens } from '../types';
 const Stack = createStackNavigator<IAuthStackParamList>();
 
 const AuthStack = () => {
+  // const [isFirstLaunch, setIsFirstLaunch] = useState<boolean>(false);
+  const isFirstLaunch = true;
+
+  const screenOptions: StackNavigationOptions = {
+    cardOverlayEnabled: true,
+    presentation: 'card',
+    animationEnabled: true,
+    animationTypeForReplace: 'push',
+    headerShown: false
+  };
+
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName={isFirstLaunch ? Screens.Onboarding : Screens.Login}
+      screenOptions={screenOptions}
+    >
       <Stack.Screen name={Screens.Login} component={LoginScreen} />
       <Stack.Screen name={Screens.Register} component={RegisterScreen} />
       <Stack.Screen name={Screens.Onboarding} component={OnboardingScreen} />
