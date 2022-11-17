@@ -1,37 +1,59 @@
-import React from 'react';
-import { Pressable, StyleSheet, ViewStyle } from 'react-native';
+import React, { useMemo } from 'react';
+import {
+  Pressable,
+  PressableStateCallbackType,
+  StyleProp,
+  StyleSheet,
+  Text,
+  ViewStyle
+} from 'react-native';
+
 import globalStyles from '../../styles';
 import { colors } from '../../theme';
-
-interface IButtonProps {
-  children: JSX.Element;
-  onPress: () => void;
-  backgroundColor?: string;
-  borderColor?: string;
-  containerStyle?: ViewStyle;
-}
+import { IButtonProps, IButtonStyles } from './types';
 
 const Button = ({
+  backgroundColor,
+  borderColor,
   children,
-  containerStyle,
+  style,
+  title,
   onPress,
-  backgroundColor = colors.primary,
-  borderColor = colors.accent
+  ...props
 }: IButtonProps) => {
-  const styles = getStyles(borderColor, backgroundColor);
+  const styles = useMemo(
+    () => getStyles(backgroundColor, borderColor),
+    [borderColor, backgroundColor]
+  );
+
+  const buttonStyles = useMemo(
+    () =>
+      ({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> =>
+        [
+          { opacity: pressed ? 0.8 : 1 },
+          globalStyles.center,
+          styles.buttonContainer,
+          style
+        ],
+    [styles, globalStyles, style]
+  );
 
   return (
-    <Pressable
-      style={[globalStyles.center, styles.buttonContainer, containerStyle]}
-      onPress={onPress}
-    >
-      {children}
+    <Pressable style={buttonStyles} onPress={onPress} {...props}>
+      {children ? (
+        children
+      ) : (
+        <Text style={[globalStyles.text, styles.buttonTitle]}>{title}</Text>
+      )}
     </Pressable>
   );
 };
 
-const getStyles = (borderColor: string, backgroundColor: string) =>
-  StyleSheet.create({
+const getStyles = (
+  backgroundColor = colors.primary,
+  borderColor = colors.accent
+) =>
+  StyleSheet.create<IButtonStyles>({
     buttonContainer: {
       backgroundColor: backgroundColor,
       borderColor: borderColor,
@@ -39,7 +61,8 @@ const getStyles = (borderColor: string, backgroundColor: string) =>
       borderWidth: 1,
       paddingVertical: 10,
       width: '100%'
-    }
+    },
+    buttonTitle: {}
   });
 
 export default Button;
