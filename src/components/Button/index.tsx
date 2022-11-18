@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 
 import globalStyles from '../../styles';
-import { colors } from '../../theme';
-import { IButtonProps, IButtonStyles } from './types';
+import { colors, fonts } from '../../theme';
+import { IButtonProps } from './types';
 
 const Button = ({
   backgroundColor,
@@ -40,11 +40,7 @@ const Button = ({
 
   return (
     <Pressable style={buttonStyles} onPress={onPress} {...props}>
-      {children ? (
-        children
-      ) : (
-        <Text style={[globalStyles.text, styles.buttonTitle]}>{title}</Text>
-      )}
+      {children ? children : <Text style={styles.buttonTitle}>{title}</Text>}
     </Pressable>
   );
 };
@@ -53,7 +49,7 @@ const getStyles = (
   backgroundColor = colors.primary,
   borderColor = colors.accent
 ) =>
-  StyleSheet.create<IButtonStyles>({
+  StyleSheet.create({
     buttonContainer: {
       backgroundColor: backgroundColor,
       borderColor: borderColor,
@@ -62,7 +58,11 @@ const getStyles = (
       paddingVertical: 10,
       width: '100%'
     },
-    buttonTitle: {}
+    buttonTitle: {
+      color: borderColor,
+      fontFamily: 'Rubik-Medium',
+      fontSize: fonts.xviii
+    }
   });
 
 export default Button;
