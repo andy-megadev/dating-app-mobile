@@ -6,7 +6,7 @@ import { Button } from '../../../../../components';
 import styles from '../../styles';
 import { colors } from '../../../../../theme';
 
-const Continue = () => {
+export const Continue = () => {
   return (
     <View style={[styles.center, styles.continueContainer]}>
       <View style={[styles.center, styles.orContainer]}>
@@ -54,5 +54,3 @@ const Continue = () => {
     </View>
   );
 };
-
-export default Continue;

@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 import { Button } from '../../../../../components';
 import styles from '../../styles';
 
-const Terms = () => {
+export const Terms = () => {
   return (
     <View style={[styles.center, styles.termsContainer]}>
       <View style={styles.terms}>
@@ -30,5 +30,3 @@ const Terms = () => {
     </View>
   );
 };
-
-export default Terms;

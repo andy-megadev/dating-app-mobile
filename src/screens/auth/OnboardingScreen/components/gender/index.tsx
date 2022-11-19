@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 import { Button } from '../../../../../components';
 import styles from '../../styles';
 
-const Gender = () => {
+export const Gender = () => {
   return (
     <View style={styles.center}>
       <Text style={styles.text}>Let's get started. How do you identify?</Text>
@@ -25,5 +25,3 @@ const Gender = () => {
     </View>
   );
 };
-
-export default Gender;

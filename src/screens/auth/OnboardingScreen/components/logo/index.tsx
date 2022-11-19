@@ -5,7 +5,7 @@ import styles from '../../styles';
 
 const LogoTitle = require('../../../../../assets/images/logo-title.png');
 
-const Logo = () => {
+export const Logo = () => {
   return (
     <View style={[styles.center, styles.logoContainer]}>
       <Image
@@ -16,5 +16,3 @@ const Logo = () => {
     </View>
   );
 };
-
-export default Logo;

@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   accent: '#6e3eff',
   black: '#000',
   blueFacebook: '#1578f2',
@@ -9,5 +9,3 @@ const colors = {
   transparent: '#00000000',
   white: '#fff'
 };
-
-export default colors;
