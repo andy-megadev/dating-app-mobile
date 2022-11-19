@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 
 import { Button } from '../../../components';
 import globalStyles from '../../../styles';
@@ -28,9 +29,12 @@ const OnboardingScreen = () => {
           />
           <Button title={'Female'} style={styles.button} onPress={() => {}} />
         </View>
-        <TouchableOpacity activeOpacity={0.8} onPress={() => {}}>
-          <Text style={[styles.text, styles.textPurple]}>Another gender</Text>
-        </TouchableOpacity>
+        <Button
+          isTextButton={true}
+          onPress={() => {}}
+          title={'Another gender'}
+          titleStyle={[styles.text, styles.textPurple]}
+        />
       </View>
       <View style={[globalStyles.center, styles.continueContainer]}>
         <View style={[globalStyles.center, styles.orContainer]}>
@@ -45,9 +49,12 @@ const OnboardingScreen = () => {
             style={styles.mBottom15}
             onPress={() => {}}
           >
-            <Text style={[styles.text, styles.continueText]}>
-              Continue with Apple
-            </Text>
+            <View style={[globalStyles.center, styles.continueWith]}>
+              <FontAwesome name={'apple'} size={20} color={colors.white} />
+              <Text style={[styles.text, styles.continueText]}>
+                Continue with Apple
+              </Text>
+            </View>
           </Button>
           <Button
             backgroundColor={colors.blueFacebook}
@@ -55,23 +62,45 @@ const OnboardingScreen = () => {
             style={styles.mBottom15}
             onPress={() => {}}
           >
-            <Text style={[styles.text, styles.continueText]}>
-              Continue with Facebook
-            </Text>
+            <View style={[globalStyles.center, styles.continueWith]}>
+              <FontAwesome5 name={'facebook'} size={20} color={colors.white} />
+              <Text style={[styles.text, styles.continueText]}>
+                Continue with Facebook
+              </Text>
+            </View>
           </Button>
         </View>
-        <Text style={[styles.text, styles.permissionText]}>
+        <Text style={[styles.text, styles.textPermission, styles.mBottom30]}>
           We'll never share anything without your permission
         </Text>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          style={styles.continueAnotherWay}
+        <Button
+          isTextButton={true}
+          title={'Continue another way'}
+          titleStyle={[styles.text, styles.textPurple]}
           onPress={() => {}}
-        >
-          <Text style={[styles.text, styles.textPurple]}>
-            Continue another way
+        />
+      </View>
+      <View style={[globalStyles.center, styles.termsContainer]}>
+        <View style={styles.terms}>
+          <Text style={[styles.text, styles.textPermission]}>
+            {'By signing up, you agree to our '}
           </Text>
-        </TouchableOpacity>
+          <Button
+            isTextButton={true}
+            title={'Terms and Conditions'}
+            titleStyle={[styles.text, styles.textPermission, styles.textLink]}
+          />
+        </View>
+        <View style={styles.terms}>
+          <Text style={[styles.text, styles.textPermission]}>
+            {'Learn how we use your data in our '}
+          </Text>
+          <Button
+            isTextButton={true}
+            title={'Privacy Policy'}
+            titleStyle={[styles.text, styles.textPermission, styles.textLink]}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -79,8 +108,7 @@ const OnboardingScreen = () => {
 
 const styles = StyleSheet.create({
   button: {
-    flex: 1,
-    paddingVertical: 15
+    flex: 1
   },
   continueAnotherWay: {
     marginTop: 30
@@ -90,7 +118,11 @@ const styles = StyleSheet.create({
   },
   continueText: {
     color: colors.white,
-    fontFamily: 'Rubik-SemiBold'
+    fontFamily: 'Rubik-SemiBold',
+    marginLeft: 10
+  },
+  continueWith: {
+    flexDirection: 'row'
   },
   genderButtons: {
     flexDirection: 'row',
@@ -110,6 +142,9 @@ const styles = StyleSheet.create({
   mBottom15: {
     marginBottom: 15
   },
+  mBottom30: {
+    marginBottom: 30
+  },
   mRight15: {
     marginRight: 15
   },
@@ -127,14 +162,21 @@ const styles = StyleSheet.create({
     fontSize: fonts.xviii,
     marginHorizontal: 15
   },
-  permissionText: {
-    fontSize: fonts.xii
+  terms: { flexDirection: 'row' },
+  termsContainer: {
+    marginTop: 'auto'
   },
   text: {
     color: colors.greyDark,
     fontFamily: 'Rubik-Regular',
     fontSize: fonts.xvi,
     textAlign: 'center'
+  },
+  textLink: {
+    textDecorationLine: 'underline'
+  },
+  textPermission: {
+    fontSize: fonts.xii
   },
   textPurple: {
     color: colors.accent
