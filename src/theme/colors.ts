@@ -6,6 +6,7 @@ const colors = {
   greyMid: '#cbcbcb',
   greyDark: '#717171',
   primary: '#fff',
+  transparent: '#00000000',
   white: '#fff'
 };
 

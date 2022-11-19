@@ -16,13 +16,15 @@ const Button = ({
   backgroundColor,
   borderColor,
   children,
+  isTextButton,
   style,
   title,
+  titleStyle,
   onPress,
   ...props
 }: IButtonProps) => {
   const styles = useMemo(
-    () => getStyles(backgroundColor, borderColor),
+    () => getStyles(backgroundColor, borderColor, isTextButton),
     [borderColor, backgroundColor]
   );
 
@@ -40,28 +42,35 @@ const Button = ({
 
   return (
     <Pressable style={buttonStyles} onPress={onPress} {...props}>
-      {children ? children : <Text style={styles.buttonTitle}>{title}</Text>}
+      {children ? (
+        children
+      ) : (
+        <Text style={[styles.buttonTitle, titleStyle]}>{title}</Text>
+      )}
     </Pressable>
   );
 };
 
 const getStyles = (
   backgroundColor = colors.primary,
-  borderColor = colors.accent
+  borderColor = colors.accent,
+  isTextButton = false
 ) =>
   StyleSheet.create({
-    buttonContainer: {
-      backgroundColor: backgroundColor,
-      borderColor: borderColor,
-      borderRadius: 40,
-      borderWidth: 1,
-      paddingVertical: 10,
-      width: '100%'
-    },
+    buttonContainer: isTextButton
+      ? { width: 'auto' }
+      : {
+          backgroundColor: backgroundColor,
+          borderColor: borderColor,
+          borderRadius: 40,
+          borderWidth: 1,
+          paddingVertical: 15,
+          width: '100%'
+        },
     buttonTitle: {
-      color: borderColor,
+      color: isTextButton ? colors.accent : borderColor,
       fontFamily: 'Rubik-Medium',
-      fontSize: fonts.xviii
+      fontSize: isTextButton ? fonts.xvi : fonts.xviii
     }
   });
 
