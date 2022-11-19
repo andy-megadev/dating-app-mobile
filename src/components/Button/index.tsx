@@ -12,7 +12,7 @@ import globalStyles from '../../styles';
 import { colors, fonts } from '../../theme';
 import { IButtonProps } from './types';
 
-const Button = ({
+export const Button = ({
   backgroundColor,
   borderColor,
   children,
@@ -73,5 +73,3 @@ const getStyles = (
       fontSize: isTextButton ? fonts.xvi : fonts.xviii
     }
   });
-
-export default Button;
