@@ -1,0 +1,18 @@
+{
+  "common": {
+    "female": "Female",
+    "male": "Male"
+  },
+  "onboarding": {
+    "anotherGender": "Another gender",
+    "bySigningUp": "By signing up, you agree to our ",
+    "continueAnotherWay": "Continue another way",
+    "continueWith": "Continue with %{authOption}",
+    "learnHowWeUse": "Learn how we use your data in our ",
+    "letsGetStarted": "Let's get started. How do you identify?",
+    "neverShare": "We'll never share anything without your permission",
+    "or": "or",
+    "privacyPolicy": "Privacy Policy",
+    "termsAndConditions": "Terms and Conditions"
+  }
+}

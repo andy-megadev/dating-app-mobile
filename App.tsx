@@ -3,6 +3,7 @@ import 'react-native-gesture-handler';
 import React, { useCallback, useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as SplashScreen from 'expo-splash-screen';
+import { useFonts } from 'expo-font';
 
 import AppNavigation from './src/navigation';
 
@@ -11,6 +12,11 @@ SplashScreen.preventAutoHideAsync();
 
 const App = () => {
   const [isAppReady, setIsAppReady] = useState(false);
+  const [isFontsLoaded] = useFonts({
+    'Rubik-Regular': require('./src/assets/fonts/Rubik-Regular.ttf'),
+    'Rubik-Medium': require('./src/assets/fonts/Rubik-Medium.ttf'),
+    'Rubik-SemiBold': require('./src/assets/fonts/Rubik-SemiBold.ttf')
+  });
 
   const prepareApp = useCallback(async () => {
     try {
@@ -28,12 +34,12 @@ const App = () => {
 
   const onLayoutRootView = useCallback(async () => {
     // hide splash screen when app is ready and screen is rendered
-    if (isAppReady) {
+    if (isAppReady && isFontsLoaded) {
       await SplashScreen.hideAsync();
     }
   }, [isAppReady]);
 
-  if (!isAppReady) {
+  if (!isAppReady || !isFontsLoaded) {
     return null;
   }
 
