@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     fontSize: fonts.xviii,
     marginHorizontal: 15
   },
-  terms: { flexDirection: 'row' },
   termsContainer: {
     marginTop: 'auto'
   },

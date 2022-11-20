@@ -25,7 +25,7 @@ export const Button = ({
 }: IButtonProps) => {
   const styles = useMemo(
     () => getStyles(backgroundColor, borderColor, isTextButton),
-    [borderColor, backgroundColor]
+    [borderColor, backgroundColor, isTextButton]
   );
 
   const buttonStyles = useMemo(
