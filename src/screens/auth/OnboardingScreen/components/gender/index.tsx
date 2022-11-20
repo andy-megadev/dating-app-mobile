@@ -1,26 +1,31 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import i18n from '../../../../../i18n';
 import { Button } from '../../../../../components';
 import styles from '../../styles';
 
 export const Gender = () => {
   return (
     <View style={styles.center}>
-      <Text style={styles.text}>Let's get started. How do you identify?</Text>
+      <Text style={styles.text}>{i18n.t('onboarding.letsGetStarted')}</Text>
       <View style={[styles.center, styles.genderButtons]}>
         <Button
-          title={'Male'}
+          title={i18n.t('common.male')}
           style={[styles.button, styles.mRight15]}
           onPress={() => {}}
         />
-        <Button title={'Female'} style={styles.button} onPress={() => {}} />
+        <Button
+          title={i18n.t('common.female')}
+          style={styles.button}
+          onPress={() => {}}
+        />
       </View>
       <Button
         isTextButton={true}
-        onPress={() => {}}
-        title={'Another gender'}
+        title={i18n.t('onboarding.anotherGender')}
         titleStyle={[styles.text, styles.textPurple]}
+        onPress={() => {}}
       />
     </View>
   );

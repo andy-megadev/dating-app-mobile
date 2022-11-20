@@ -1,32 +1,24 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { Button } from '../../../../../components';
+import i18n from '../../../../../i18n';
 import styles from '../../styles';
 
 export const Terms = () => {
   return (
     <View style={[styles.center, styles.termsContainer]}>
-      <View style={styles.terms}>
-        <Text style={[styles.text, styles.textPermission]}>
-          {'By signing up, you agree to our '}
+      <Text style={[styles.text, styles.textPermission]}>
+        {i18n.t('onboarding.bySigningUp')}
+        <Text style={styles.textLink} onPress={() => {}}>
+          {i18n.t('onboarding.termsAndConditions')}
         </Text>
-        <Button
-          isTextButton={true}
-          title={'Terms and Conditions'}
-          titleStyle={[styles.text, styles.textPermission, styles.textLink]}
-        />
-      </View>
-      <View style={styles.terms}>
-        <Text style={[styles.text, styles.textPermission]}>
-          {'Learn how we use your data in our '}
+      </Text>
+      <Text style={[styles.text, styles.textPermission]}>
+        {i18n.t('onboarding.learnHowWeUse')}
+        <Text style={styles.textLink} onPress={() => {}}>
+          {i18n.t('onboarding.privacyPolicy')}
         </Text>
-        <Button
-          isTextButton={true}
-          title={'Privacy Policy'}
-          titleStyle={[styles.text, styles.textPermission, styles.textLink]}
-        />
-      </View>
+      </Text>
     </View>
   );
 };
