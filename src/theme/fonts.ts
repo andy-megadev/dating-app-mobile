@@ -1,7 +1,9 @@
+import { scale as s } from '../utils';
+
 export const fonts = {
-  x: 10,
-  xii: 12,
-  xiv: 14,
-  xvi: 16,
-  xviii: 18
+  x: s(10),
+  xii: s(12),
+  xiv: s(14),
+  xvi: s(16),
+  xviii: s(18)
 };
