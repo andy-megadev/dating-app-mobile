@@ -1,7 +1,9 @@
 {
   "common": {
     "female": "Female",
-    "male": "Male"
+    "male": "Male",
+    "noThanks": "No, thanks",
+    "ok": "OK"
   },
   "onboarding": {
     "anotherGender": "Another gender",
@@ -13,6 +15,7 @@
     "neverShare": "We'll never share anything without your permission",
     "or": "or",
     "privacyPolicy": "Privacy Policy",
-    "termsAndConditions": "Terms and Conditions"
+    "termsAndConditions": "Terms and Conditions",
+    "wantToBeNotified": "Want to be notified when someone nearby wants to chat?"
   }
 }
