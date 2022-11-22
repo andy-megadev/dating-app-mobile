@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import globalStyles from '../../../../styles';
 import { colors, fonts } from '../../../../theme';
+import { scale as s, scaleHeight as sh } from '../../../../utils';
 
 const styles = StyleSheet.create({
   ...globalStyles,
@@ -9,15 +10,15 @@ const styles = StyleSheet.create({
     flex: 1
   },
   continueAnotherWay: {
-    marginTop: 30
+    marginTop: sh(30)
   },
   continueContainer: {
-    marginTop: 30
+    marginTop: sh(30)
   },
   continueText: {
     color: colors.white,
     fontFamily: 'Rubik-SemiBold',
-    marginLeft: 10
+    marginLeft: s(10)
   },
   continueWith: {
     flexDirection: 'row'
@@ -25,42 +26,43 @@ const styles = StyleSheet.create({
   genderButtons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 20,
-    marginBottom: 30,
+    marginTop: sh(20),
+    marginBottom: sh(30),
     width: '100%'
   },
   logoContainer: {
-    paddingVertical: 60
+    paddingVertical: sh(60)
   },
   logoImage: { width: 300 },
   mainContainer: {
-    paddingHorizontal: 20
+    paddingHorizontal: s(20)
   },
   mBottom15: {
-    marginBottom: 15
+    marginBottom: sh(15)
   },
   mBottom30: {
-    marginBottom: 30
+    marginBottom: sh(30)
   },
   mRight15: {
-    marginRight: 15
+    marginRight: s(15)
   },
   orContainer: {
     flexDirection: 'row',
-    marginBottom: 20
+    marginBottom: sh(20)
   },
   orDash: {
     backgroundColor: colors.greyLight,
-    width: 25,
+    width: s(25),
     height: 1
   },
   orText: {
     color: colors.greyMid,
     fontSize: fonts.xviii,
-    marginHorizontal: 15
+    marginHorizontal: s(15)
   },
   termsContainer: {
-    marginTop: 'auto'
+    marginTop: 'auto',
+    marginBottom: s(10)
   },
   text: {
     color: colors.greyDark,

@@ -11,6 +11,7 @@ import {
 import globalStyles from '../../styles';
 import { colors, fonts } from '../../theme';
 import { IButtonProps } from './types';
+import { scaleHeight as sh } from '../../utils';
 
 export const Button = ({
   backgroundColor,
@@ -64,7 +65,7 @@ const getStyles = (
           borderColor: borderColor,
           borderRadius: 40,
           borderWidth: 1,
-          paddingVertical: 15,
+          paddingVertical: sh(15),
           width: '100%'
         },
     buttonTitle: {
