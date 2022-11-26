@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import i18n from '../../../../../i18n';
-import { Button } from '../../../../../components';
+import i18n from 'src/i18n';
+import { Button } from 'src/components';
 import styles from '../../styles';
 
 export const Gender = () => {

@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import i18n from 'src/i18n';
+import { alert, generateAlertConfig, IAlertConfig } from 'src/utils';
 import { Continue, Gender, Logo, Terms } from './components';
 import styles from './styles';
-import i18n from '../../../i18n';
-import { alert, generateAlertConfig, IAlertConfig } from '../../../utils';
 
 const OnboardingScreen = () => {
   const alertButtons: IAlertConfig['buttons'] = useMemo(

@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
 
-import globalStyles from '../../../../styles';
-import { colors, fonts } from '../../../../theme';
-import { scale as s, scaleHeight as sh } from '../../../../utils';
+import globalStyles from 'src/styles';
+import { colors, fonts } from 'src/theme';
+import { scale as s, scaleHeight as sh } from 'src/utils';
 
 const styles = StyleSheet.create({
   ...globalStyles,

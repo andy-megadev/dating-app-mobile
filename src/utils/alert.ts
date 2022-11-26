@@ -7,12 +7,19 @@ export interface IAlertConfig {
   options?: AlertOptions;
 }
 
-export const generateAlertConfig = (
-  title: string,
-  message?: string,
-  buttons?: AlertButton[],
-  options?: AlertOptions
-): IAlertConfig => ({
+type IGenerateAlertConfig = (
+  title: IAlertConfig['title'],
+  message?: IAlertConfig['message'],
+  buttons?: IAlertConfig['buttons'],
+  options?: IAlertConfig['options']
+) => IAlertConfig;
+
+export const generateAlertConfig: IGenerateAlertConfig = (
+  title,
+  message,
+  buttons,
+  options
+) => ({
   title,
   message,
   buttons,
