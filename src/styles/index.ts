@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../theme';
+import { colors } from 'src/theme';
 
 const globalStyles = StyleSheet.create({
   center: {
