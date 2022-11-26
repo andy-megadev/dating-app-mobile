@@ -8,13 +8,10 @@ import {
   ViewStyle
 } from 'react-native';
 
-import globalStyles from '../../styles';
-// import globalStyles from '@styles';
-// import { colors, fonts } from '../../theme';
+import globalStyles from 'src/styles';
 import { colors, fonts } from 'src/theme';
+import { scaleHeight as sh } from 'src/utils';
 import { IButtonProps } from './types';
-import { scaleHeight as sh } from '../../utils';
-// import { scaleHeight as sh } from '@utils';
 
 export const Button = ({
   backgroundColor,

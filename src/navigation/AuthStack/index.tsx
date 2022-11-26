@@ -4,9 +4,9 @@ import {
   StackNavigationOptions
 } from '@react-navigation/stack';
 
-import LoginScreen from '../../screens/auth/LoginScreen';
-import RegisterScreen from '../../screens/auth/RegisterScreen';
-import OnboardingScreen from '../../screens/auth/OnboardingScreen';
+import LoginScreen from 'src/screens/auth/LoginScreen';
+import RegisterScreen from 'src/screens/auth/RegisterScreen';
+import OnboardingScreen from 'src/screens/auth/OnboardingScreen';
 import { IAuthStackParamList, Screens } from '../types';
 
 const Stack = createStackNavigator<IAuthStackParamList>();
