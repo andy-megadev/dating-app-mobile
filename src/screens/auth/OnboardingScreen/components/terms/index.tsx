@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import i18n from '../../../../../i18n';
+import i18n from 'src/i18n';
 import styles from '../../styles';
 
 export const Terms = () => {
