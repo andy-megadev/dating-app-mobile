@@ -22,6 +22,9 @@
   },
   "anotherGender": {
     "howDoYouIdentify": "Как Вы себя идентифицируете?",
-    "iIdentifyAs": "Я идентрифицирую себя как..."
+    "idLikeToBeShownTo": "Я бы хотел быть показан...",
+    "iIdentifyAs": "Я идентрифицирую себя как...",
+    "toLookingForMen": "Людям, которые ищут мужчин",
+    "toLookingForWomen": "Людям, которые ищут женщин"
   }
 }

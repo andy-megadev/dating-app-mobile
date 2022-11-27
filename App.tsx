@@ -13,6 +13,7 @@ SplashScreen.preventAutoHideAsync();
 const App = () => {
   const [isAppReady, setIsAppReady] = useState(false);
   const [isFontsLoaded] = useFonts({
+    'Rubik-Light': require('./src/assets/fonts/Rubik-Light.ttf'),
     'Rubik-Regular': require('./src/assets/fonts/Rubik-Regular.ttf'),
     'Rubik-Medium': require('./src/assets/fonts/Rubik-Medium.ttf'),
     'Rubik-SemiBold': require('./src/assets/fonts/Rubik-SemiBold.ttf')
