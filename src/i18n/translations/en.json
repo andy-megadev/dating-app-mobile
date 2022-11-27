@@ -1,5 +1,7 @@
 {
   "common": {
+    "cancel": "Cancel",
+    "done": "Done",
     "female": "Female",
     "male": "Male",
     "noThanks": "No, thanks",
@@ -17,5 +19,9 @@
     "privacyPolicy": "Privacy Policy",
     "termsAndConditions": "Terms and Conditions",
     "wantToBeNotified": "Want to be notified when someone nearby wants to chat?"
+  },
+  "anotherGender": {
+    "howDoYouIdentify": "How do you identify?",
+    "iIdentifyAs": "I identify as..."
   }
 }
