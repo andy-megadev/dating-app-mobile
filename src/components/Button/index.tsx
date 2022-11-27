@@ -33,7 +33,7 @@ export const Button = ({
     () =>
       ({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> =>
         [
-          { opacity: pressed ? 0.8 : 1 },
+          { opacity: pressed ? 0.7 : 1 },
           globalStyles.center,
           styles.buttonContainer,
           style
