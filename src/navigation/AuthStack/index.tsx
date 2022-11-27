@@ -5,6 +5,7 @@ import {
 } from '@react-navigation/stack';
 
 import {
+  AnotherGenderScreen,
   LoginScreen,
   OnboardingScreen,
   RegisterScreen
@@ -30,9 +31,13 @@ const AuthStack = () => {
       initialRouteName={isFirstLaunch ? Screens.Onboarding : Screens.Login}
       screenOptions={screenOptions}
     >
+      <Stack.Screen
+        name={Screens.AnotherGender}
+        component={AnotherGenderScreen}
+      />
       <Stack.Screen name={Screens.Login} component={LoginScreen} />
-      <Stack.Screen name={Screens.Register} component={RegisterScreen} />
       <Stack.Screen name={Screens.Onboarding} component={OnboardingScreen} />
+      <Stack.Screen name={Screens.Register} component={RegisterScreen} />
     </Stack.Navigator>
   );
 };
