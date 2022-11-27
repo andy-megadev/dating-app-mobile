@@ -22,6 +22,9 @@
   },
   "anotherGender": {
     "howDoYouIdentify": "How do you identify?",
-    "iIdentifyAs": "I identify as..."
+    "idLikeToBeShownTo": "I'd like to be shown to...",
+    "iIdentifyAs": "I identify as...",
+    "toLookingForMen": "To people looking for men",
+    "toLookingForWomen": "To people looking for women"
   }
 }
