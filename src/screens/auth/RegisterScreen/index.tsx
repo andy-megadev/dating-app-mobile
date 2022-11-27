@@ -1,7 +1,5 @@
 import React from 'react';
 
-const RegisterScreen = () => {
+export const RegisterScreen = () => {
   return <></>;
 };
-
-export default RegisterScreen;

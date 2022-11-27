@@ -1,7 +1,5 @@
 import React from 'react';
 
-const LoginScreen = () => {
+export const LoginScreen = () => {
   return <></>;
 };
-
-export default LoginScreen;
