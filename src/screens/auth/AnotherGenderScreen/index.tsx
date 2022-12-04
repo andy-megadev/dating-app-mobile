@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { Reducer, useCallback, useReducer, useState } from 'react';
 import { Switch, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,8 +10,49 @@ import { colors } from 'src/theme';
 import { Cell, Header, Section, Traits } from './components';
 import { SHOW_TO_OPTIONS } from './constants';
 import styles from './styles';
+import { IAnotherGenderReducer, IAnotherGenderState } from './types';
+
+const initialState: IAnotherGenderState = {
+  identity: 'Agender',
+  intersexTraits: null,
+  isShowIdentity: true,
+  showTo: 'man'
+};
+
+const reducer: IAnotherGenderReducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_IDENTITY':
+      return {
+        ...state,
+        identity: action.payload
+      };
+    case 'SET_INTERSEX_TRAITS':
+      return {
+        ...state,
+        intersexTraits: action.payload
+      };
+    case 'SET_IS_SHOW_IDENTITY':
+      return {
+        ...state,
+        isShowIdentity: action.payload
+      };
+    case 'SET_SHOW_TO':
+      return {
+        ...state,
+        showTo: action.payload
+      };
+    case 'RESET':
+      return initialState;
+    default:
+      return state;
+  }
+};
 
 export const AnotherGenderScreen = () => {
+  const [anotherGender, dispatch] = useReducer<IAnotherGenderReducer>(
+    reducer,
+    initialState
+  );
   const [isSwitch, setIsSwitch] = useState<boolean>(true);
   const [hasIntersexTraits, setHasIntersexTraits] = useState<
     boolean | null | undefined
