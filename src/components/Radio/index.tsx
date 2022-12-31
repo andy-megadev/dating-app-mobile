@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import {
   Pressable,
   PressableStateCallbackType,
@@ -15,6 +15,7 @@ import { IRadioProps } from './types';
 
 export const Radio = ({
   containerStyle,
+  value,
   size,
   style,
   options,
@@ -22,8 +23,6 @@ export const Radio = ({
   onOptionChosen,
   ...props
 }: IRadioProps) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
   const styles = useMemo(() => getStyles(size), [size]);
 
   const radioStyles = useMemo(
@@ -33,18 +32,17 @@ export const Radio = ({
     [styles, containerStyle]
   );
 
-  const handleRadioPress = (value: string, index: number) => {
-    setActiveIndex(index);
-    onOptionChosen(value, index);
+  const handleRadioPress: IRadioProps['onOptionChosen'] = (value) => {
+    onOptionChosen(value);
   };
 
   return (
     <>
-      {options.map((option, index) => (
+      {options.map((option) => (
         <Pressable
-          key={option}
+          key={option.title}
           style={radioStyles}
-          onPress={() => handleRadioPress(option, index)}
+          onPress={() => handleRadioPress(option.value)}
           {...props}
         >
           <View style={[styles.radio, style]}>
@@ -53,12 +51,12 @@ export const Radio = ({
                 styles.radioInner,
                 {
                   backgroundColor:
-                    index === activeIndex ? colors.accent : colors.primary
+                    value === option.value ? colors.accent : colors.primary
                 }
               ]}
             />
           </View>
-          <Text style={styles.text}>{option}</Text>
+          <Text style={styles.text}>{option.title}</Text>
         </Pressable>
       ))}
     </>
