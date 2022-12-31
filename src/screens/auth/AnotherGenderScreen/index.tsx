@@ -1,4 +1,4 @@
-import React, { Reducer, useCallback, useReducer, useState } from 'react';
+import React, { useCallback, useReducer } from 'react';
 import { Switch, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,13 +10,14 @@ import { colors } from 'src/theme';
 import { Cell, Header, Section, Traits } from './components';
 import { SHOW_TO_OPTIONS } from './constants';
 import styles from './styles';
-import { IAnotherGenderReducer, IAnotherGenderState } from './types';
+import { IAnotherGenderReducer, IAnotherGenderState, IShowTo } from './types';
+import { IRadioProps } from 'src/components/Radio/types';
 
 const initialState: IAnotherGenderState = {
+  hasIntersexTraits: null,
   identity: 'Agender',
-  intersexTraits: null,
   isShowIdentity: true,
-  showTo: 'man'
+  showTo: 'woman'
 };
 
 const reducer: IAnotherGenderReducer = (state, action) => {
@@ -29,7 +30,7 @@ const reducer: IAnotherGenderReducer = (state, action) => {
     case 'SET_INTERSEX_TRAITS':
       return {
         ...state,
-        intersexTraits: action.payload
+        hasIntersexTraits: action.payload
       };
     case 'SET_IS_SHOW_IDENTITY':
       return {
@@ -53,32 +54,31 @@ export const AnotherGenderScreen = () => {
     reducer,
     initialState
   );
-  const [isSwitch, setIsSwitch] = useState<boolean>(true);
-  const [hasIntersexTraits, setHasIntersexTraits] = useState<
-    boolean | null | undefined
-  >(null);
+  const { identity, hasIntersexTraits, isShowIdentity, showTo } = anotherGender;
 
   const navigation = useNavigation();
 
-  const handleChosenOption = (value: string, index: number) => {
-    console.log(value, index);
-  };
+  const handleChosenOption: IRadioProps['onOptionChosen'] = (value) =>
+    dispatch({ type: 'SET_SHOW_TO', payload: value as IShowTo });
 
-  const handleSwitch = (value: boolean) => setIsSwitch(value);
+  const handleSwitch = (value: boolean) =>
+    dispatch({ type: 'SET_IS_SHOW_IDENTITY', payload: value });
 
   const handleCancel = useCallback(() => navigation.goBack(), []);
   const handleDone = useCallback(() => navigation.goBack(), []);
 
-  const clearintersexTraits = () => setHasIntersexTraits(null);
+  const clearintersexTraits = () =>
+    dispatch({ type: 'SET_INTERSEX_TRAITS', payload: null });
 
   return (
     <SafeAreaView style={globalStyles.safeArea}>
       <Header onCancel={handleCancel} onDone={handleDone} />
       <Section title={i18n.t('anotherGender.iIdentifyAs')}>
-        <Cell title={'Agender'} />
+        <Cell title={identity} />
       </Section>
       <Section title={i18n.t('anotherGender.idLikeToBeShownTo')}>
         <Radio
+          value={showTo}
           options={SHOW_TO_OPTIONS}
           containerStyle={{ paddingHorizontal: 0 }}
           onOptionChosen={handleChosenOption}
@@ -92,7 +92,7 @@ export const AnotherGenderScreen = () => {
           <Switch
             ios_backgroundColor={colors.greyLighter}
             trackColor={{ true: colors.accent }}
-            value={isSwitch}
+            value={isShowIdentity}
             onValueChange={handleSwitch}
           />
         </View>
