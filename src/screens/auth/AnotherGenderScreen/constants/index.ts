@@ -1,8 +1,8 @@
 import i18n from 'src/i18n';
 
 export const SHOW_TO_OPTIONS = [
-  i18n.t('anotherGender.toLookingForWomen'),
-  i18n.t('anotherGender.toLookingForMen')
+  { title: i18n.t('anotherGender.toLookingForWomen'), value: 'woman' },
+  { title: i18n.t('anotherGender.toLookingForMen'), value: 'man' }
 ];
 
 export const INTERSEX_TRAITS_OPTIONS = [
