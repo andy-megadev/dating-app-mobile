@@ -1,17 +1,10 @@
 import React, { useMemo } from 'react';
-import {
-  Pressable,
-  PressableStateCallbackType,
-  StyleProp,
-  StyleSheet,
-  Text,
-  View,
-  ViewStyle
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { colors, fonts } from 'src/theme';
 import { scale as s, scaleHeight as sh } from 'src/utils';
-import { IRadioProps } from './types';
+import { PressableHighlight } from '../PressableHighlight';
+import { IRadioProps } from '../types';
 
 export const Radio = ({
   containerStyle,
@@ -25,13 +18,6 @@ export const Radio = ({
 }: IRadioProps) => {
   const styles = useMemo(() => getStyles(size), [size]);
 
-  const radioStyles = useMemo(
-    () =>
-      ({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> =>
-        [{ opacity: pressed ? 0.7 : 1 }, styles.radioContainer, containerStyle],
-    [styles, containerStyle]
-  );
-
   const handleRadioPress: IRadioProps['onOptionChosen'] = (value) => {
     onOptionChosen(value);
   };
@@ -39,9 +25,9 @@ export const Radio = ({
   return (
     <>
       {options.map((option) => (
-        <Pressable
+        <PressableHighlight
           key={option.title}
-          style={radioStyles}
+          styles={[styles.radioContainer, containerStyle]}
           onPress={() => handleRadioPress(option.value)}
           {...props}
         >
@@ -57,7 +43,7 @@ export const Radio = ({
             />
           </View>
           <Text style={styles.text}>{option.title}</Text>
-        </Pressable>
+        </PressableHighlight>
       ))}
     </>
   );

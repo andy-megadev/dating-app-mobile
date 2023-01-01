@@ -1,17 +1,11 @@
 import React, { useMemo } from 'react';
-import {
-  Pressable,
-  PressableStateCallbackType,
-  StyleProp,
-  StyleSheet,
-  Text,
-  ViewStyle
-} from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
 import globalStyles from 'src/styles';
 import { colors, fonts } from 'src/theme';
 import { scaleHeight as sh } from 'src/utils';
-import { IButtonProps } from './types';
+import { PressableHighlight } from '../PressableHighlight';
+import { IButtonProps } from '../types';
 
 export const Button = ({
   backgroundColor,
@@ -29,26 +23,18 @@ export const Button = ({
     [borderColor, backgroundColor, isTextButton]
   );
 
-  const buttonStyles = useMemo(
-    () =>
-      ({ pressed }: PressableStateCallbackType): StyleProp<ViewStyle> =>
-        [
-          { opacity: pressed ? 0.7 : 1 },
-          globalStyles.center,
-          styles.buttonContainer,
-          style
-        ],
-    [styles, globalStyles, style]
-  );
-
   return (
-    <Pressable style={buttonStyles} onPress={onPress} {...props}>
+    <PressableHighlight
+      styles={[globalStyles.center, styles.buttonContainer, style]}
+      onPress={onPress}
+      {...props}
+    >
       {children ? (
         children
       ) : (
         <Text style={[styles.buttonTitle, titleStyle]}>{title}</Text>
       )}
-    </Pressable>
+    </PressableHighlight>
   );
 };
 

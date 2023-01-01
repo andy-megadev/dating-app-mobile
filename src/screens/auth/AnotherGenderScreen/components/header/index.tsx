@@ -5,11 +5,7 @@ import i18n from 'src/i18n';
 import { Button } from 'src/components';
 import globalStyles from 'src/styles';
 import styles from '../../styles';
-
-interface IHeaderProps {
-  onCancel: () => void;
-  onDone: () => void;
-}
+import { IHeaderProps } from '../../types';
 
 export const Header = memo(({ onCancel, onDone }: IHeaderProps) => (
   <View style={[globalStyles.center, styles.headerContainer]}>

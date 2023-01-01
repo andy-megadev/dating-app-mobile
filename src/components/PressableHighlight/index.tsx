@@ -1,10 +1,7 @@
 import React from 'react';
-import { Pressable, PressableProps, StyleProp, ViewStyle } from 'react-native';
+import { Pressable } from 'react-native';
 
-interface IPressableHighlightProps extends PressableProps {
-  styles?: StyleProp<ViewStyle> | StyleProp<ViewStyle>[];
-  style?: PressableProps['style'] | StyleProp<ViewStyle>[];
-}
+import { IPressableHighlightProps } from '../types';
 
 export const PressableHighlight = ({
   children,
