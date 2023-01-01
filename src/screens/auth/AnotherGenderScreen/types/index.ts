@@ -1,15 +1,29 @@
 import { Reducer } from 'react';
 import { PressableProps, StyleProp, ViewStyle } from 'react-native';
 
-export type IShowTo = 'man' | 'woman';
+export type IIntersexTraits = 'Y' | 'N' | 'S' | null;
 
-export const isShowTo = (value: unknown): value is IShowTo => {
-  const allowed = ['man', 'woman'];
-  return typeof value === 'string' && allowed.includes(value);
-};
+export enum IntersexTraits {
+  Y = 'Y',
+  N = 'N',
+  S = 'S'
+}
+
+export const isIntersexTraits = (value: unknown): value is IIntersexTraits =>
+  typeof value === 'string' && value in IntersexTraits;
+
+export type IShowTo = 'M' | 'W';
+
+export enum ShowTo {
+  M = 'M',
+  W = 'W'
+}
+
+export const isShowTo = (value: unknown): value is IShowTo =>
+  typeof value === 'string' && value in ShowTo;
 
 export interface IAnotherGenderState {
-  hasIntersexTraits: boolean | null | undefined;
+  intersexTraits: IIntersexTraits;
   identity: string;
   isShowIdentity: boolean;
   showTo: IShowTo;
@@ -18,7 +32,7 @@ export interface IAnotherGenderState {
 export type IAnotherGenderAction =
   | { type: 'SET_IDENTITY'; payload: string }
   | { type: 'SET_SHOW_TO'; payload: IShowTo }
-  | { type: 'SET_INTERSEX_TRAITS'; payload: boolean | null | undefined }
+  | { type: 'SET_INTERSEX_TRAITS'; payload: IIntersexTraits }
   | { type: 'SET_IS_SHOW_IDENTITY'; payload: boolean }
   | { type: 'RESET' };
 
