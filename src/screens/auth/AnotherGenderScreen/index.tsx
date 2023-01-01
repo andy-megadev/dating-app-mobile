@@ -5,13 +5,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import i18n from 'src/i18n';
 import { Radio } from 'src/components';
+import { IRadioProps } from 'src/components/types';
 import globalStyles from 'src/styles';
 import { colors } from 'src/theme';
 import { Cell, Header, Section, Traits } from './components';
 import { SHOW_TO_OPTIONS } from './constants';
 import styles from './styles';
-import { IAnotherGenderReducer, IAnotherGenderState, IShowTo } from './types';
-import { IRadioProps } from 'src/components/Radio/types';
+import { IAnotherGenderReducer, IAnotherGenderState, isShowTo } from './types';
 
 const initialState: IAnotherGenderState = {
   hasIntersexTraits: null,
@@ -59,7 +59,7 @@ export const AnotherGenderScreen = () => {
   const navigation = useNavigation();
 
   const handleChosenOption: IRadioProps['onOptionChosen'] = (value) =>
-    dispatch({ type: 'SET_SHOW_TO', payload: value as IShowTo });
+    isShowTo(value) && dispatch({ type: 'SET_SHOW_TO', payload: value });
 
   const handleSwitch = (value: boolean) =>
     dispatch({ type: 'SET_IS_SHOW_IDENTITY', payload: value });

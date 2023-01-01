@@ -1,13 +1,8 @@
 import React from 'react';
-import { StyleProp, Text, View, ViewStyle } from 'react-native';
+import { Text, View } from 'react-native';
 
 import styles from '../../styles';
-
-interface ISectionProps {
-  children: React.ReactNode;
-  title: string;
-  style?: StyleProp<ViewStyle> | StyleProp<ViewStyle>[];
-}
+import { ISectionProps } from '../../types';
 
 export const Section = ({ children, title, style }: ISectionProps) => {
   return (
