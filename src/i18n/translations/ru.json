@@ -1,9 +1,14 @@
 {
   "common": {
+    "cancel": "Отмена",
+    "done": "Готово",
     "female": "Женщина",
     "male": "Мужчина",
+    "no": "Нет",
     "noThanks": "Нет, спасибо",
-    "ok": "ОК"
+    "ok": "ОК",
+    "privacy": "Конфиденциальность",
+    "yes": "Да"
   },
   "onboarding": {
     "anotherGender": "Другой пол",
@@ -17,5 +22,18 @@
     "privacyPolicy": "Политике Конфиденциальности",
     "termsAndConditions": "Условиями и Положениями",
     "wantToBeNotified": "Хотите получать уведомления, когда кто-то поблизости захочет начать чат?"
+  },
+  "anotherGender": {
+    "doYouHaveAnIntersex": "Есть ли у вас интерсекс-идентичность, черта характера или опыт?",
+    "howDoYouIdentify": "Как Вы себя идентифицируете?",
+    "idLikeToBeShownTo": "Я бы хотел быть показан...",
+    "iIdentifyAs": "Я идентрифицирую себя как...",
+    "intersexTraits": "Интерсекс черты",
+    "idRatherNotSay": "Я бы не сообщал",
+    "showHowiIdentify": "Показывать, как я себя идентифицирую",
+    "toLookingForMen": "Людям, которые ищут мужчин",
+    "toLookingForWomen": "Людям, которые ищут женщин",
+    "turningThisOffWill": "Отключение этого параметра скроет ваш пол из вашего профиля",
+    "otherInfo": "Прочая информация"
   }
 }

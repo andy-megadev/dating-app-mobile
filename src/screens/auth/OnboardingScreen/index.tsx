@@ -6,7 +6,7 @@ import { alert, generateAlertConfig, IAlertConfig } from 'src/utils';
 import { Continue, Gender, Logo, Terms } from './components';
 import styles from './styles';
 
-const OnboardingScreen = () => {
+export const OnboardingScreen = () => {
   const alertButtons: IAlertConfig['buttons'] = useMemo(
     () => [
       {
@@ -48,5 +48,3 @@ const OnboardingScreen = () => {
     </SafeAreaView>
   );
 };
-
-export default OnboardingScreen;

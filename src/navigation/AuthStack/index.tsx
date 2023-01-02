@@ -4,9 +4,12 @@ import {
   StackNavigationOptions
 } from '@react-navigation/stack';
 
-import LoginScreen from 'src/screens/auth/LoginScreen';
-import RegisterScreen from 'src/screens/auth/RegisterScreen';
-import OnboardingScreen from 'src/screens/auth/OnboardingScreen';
+import {
+  AnotherGenderScreen,
+  LoginScreen,
+  OnboardingScreen,
+  RegisterScreen
+} from 'src/screens/auth';
 import { IAuthStackParamList, Screens } from '../types';
 
 const Stack = createStackNavigator<IAuthStackParamList>();
@@ -20,7 +23,8 @@ const AuthStack = () => {
     presentation: 'card',
     animationEnabled: true,
     animationTypeForReplace: 'push',
-    headerShown: false
+    headerShown: false,
+    gestureEnabled: false
   };
 
   return (
@@ -28,9 +32,13 @@ const AuthStack = () => {
       initialRouteName={isFirstLaunch ? Screens.Onboarding : Screens.Login}
       screenOptions={screenOptions}
     >
+      <Stack.Screen
+        name={Screens.AnotherGender}
+        component={AnotherGenderScreen}
+      />
       <Stack.Screen name={Screens.Login} component={LoginScreen} />
-      <Stack.Screen name={Screens.Register} component={RegisterScreen} />
       <Stack.Screen name={Screens.Onboarding} component={OnboardingScreen} />
+      <Stack.Screen name={Screens.Register} component={RegisterScreen} />
     </Stack.Navigator>
   );
 };

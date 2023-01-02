@@ -1,9 +1,14 @@
 {
   "common": {
+    "cancel": "Cancel",
+    "done": "Done",
     "female": "Female",
     "male": "Male",
+    "no": "No",
     "noThanks": "No, thanks",
-    "ok": "OK"
+    "ok": "OK",
+    "privacy": "Privacy",
+    "yes": "Yes"
   },
   "onboarding": {
     "anotherGender": "Another gender",
@@ -17,5 +22,18 @@
     "privacyPolicy": "Privacy Policy",
     "termsAndConditions": "Terms and Conditions",
     "wantToBeNotified": "Want to be notified when someone nearby wants to chat?"
+  },
+  "anotherGender": {
+    "doYouHaveAnIntersex": "Do you have an intersex identity, trait or experience?",
+    "howDoYouIdentify": "How do you identify?",
+    "idLikeToBeShownTo": "I'd like to be shown to...",
+    "idRatherNotSay": "I'd rather not say",
+    "iIdentifyAs": "I identify as...",
+    "intersexTraits": "Intersex traits",
+    "showHowiIdentify": "Show how I identify",
+    "toLookingForMen": "To people looking for men",
+    "toLookingForWomen": "To people looking for women",
+    "turningThisOffWill": "Turning this off will hide your gender from your profile",
+    "otherInfo": "Other info"
   }
 }

@@ -1,11 +1,13 @@
 export enum Screens {
+  AnotherGender = 'AnotherGender',
   Login = 'Login',
-  Register = 'Register',
-  Onboarding = 'Onboarding'
+  Onboarding = 'Onboarding',
+  Register = 'Register'
 }
 
 export type IAuthStackParamList = {
+  [Screens.AnotherGender]: undefined;
   [Screens.Login]: undefined;
-  [Screens.Register]: undefined;
   [Screens.Onboarding]: undefined;
+  [Screens.Register]: undefined;
 };
