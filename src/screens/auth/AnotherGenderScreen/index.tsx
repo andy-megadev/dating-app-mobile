@@ -1,23 +1,31 @@
-import React, { useCallback, useReducer } from 'react';
+import React, { useCallback, useReducer, useRef } from 'react';
 import { Switch, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import BottomSheet from '@gorhom/bottom-sheet';
 
 import i18n from 'src/i18n';
-import { Radio } from 'src/components';
+import { Radio, BottomModal } from 'src/components';
 import { IRadioProps } from 'src/components/types';
 import globalStyles from 'src/styles';
 import { colors } from 'src/theme';
 import { Cell, Header, Section, Traits } from './components';
-import { SHOW_TO_OPTIONS } from './constants';
+import { SHOW_TO_OPTIONS, INTERSEX_TRAITS_OPTIONS } from './constants';
 import styles from './styles';
-import { IAnotherGenderReducer, IAnotherGenderState, isShowTo } from './types';
+import {
+  IAnotherGenderReducer,
+  IAnotherGenderState,
+  IntersexTraits,
+  ShowTo,
+  isIntersexTraits,
+  isShowTo
+} from './types';
 
 const initialState: IAnotherGenderState = {
-  hasIntersexTraits: null,
+  intersexTraits: null,
   identity: 'Agender',
   isShowIdentity: true,
-  showTo: 'woman'
+  showTo: ShowTo.W
 };
 
 const reducer: IAnotherGenderReducer = (state, action) => {
@@ -30,7 +38,7 @@ const reducer: IAnotherGenderReducer = (state, action) => {
     case 'SET_INTERSEX_TRAITS':
       return {
         ...state,
-        hasIntersexTraits: action.payload
+        intersexTraits: action.payload
       };
     case 'SET_IS_SHOW_IDENTITY':
       return {
@@ -54,21 +62,32 @@ export const AnotherGenderScreen = () => {
     reducer,
     initialState
   );
-  const { identity, hasIntersexTraits, isShowIdentity, showTo } = anotherGender;
+  const { identity, intersexTraits, isShowIdentity, showTo } = anotherGender;
 
   const navigation = useNavigation();
 
-  const handleChosenOption: IRadioProps['onOptionChosen'] = (value) =>
+  const bottomModalRef = useRef<BottomSheet>(null);
+
+  const handleShowTo: IRadioProps['onOptionChosen'] = (value) =>
     isShowTo(value) && dispatch({ type: 'SET_SHOW_TO', payload: value });
 
   const handleSwitch = (value: boolean) =>
     dispatch({ type: 'SET_IS_SHOW_IDENTITY', payload: value });
 
   const handleCancel = useCallback(() => navigation.goBack(), []);
-  const handleDone = useCallback(() => navigation.goBack(), []);
 
-  const clearintersexTraits = () =>
+  const handleDone = () => navigation.goBack();
+
+  const clearIntersexTraits = () =>
     dispatch({ type: 'SET_INTERSEX_TRAITS', payload: null });
+
+  const openIntersexTraitsPicker = () => bottomModalRef.current?.snapToIndex(0);
+
+  const handleIntersexTraits: IRadioProps['onOptionChosen'] = (value) => {
+    isIntersexTraits(value) &&
+      dispatch({ type: 'SET_INTERSEX_TRAITS', payload: value });
+    bottomModalRef.current?.close();
+  };
 
   return (
     <SafeAreaView style={globalStyles.safeArea}>
@@ -81,7 +100,7 @@ export const AnotherGenderScreen = () => {
           value={showTo}
           options={SHOW_TO_OPTIONS}
           containerStyle={{ paddingHorizontal: 0 }}
-          onOptionChosen={handleChosenOption}
+          onOptionChosen={handleShowTo}
         />
       </Section>
       <Section title={i18n.t('common.privacy')}>
@@ -101,21 +120,39 @@ export const AnotherGenderScreen = () => {
         </Text>
       </Section>
       <Section title={i18n.t('anotherGender.otherInfo')}>
-        <Cell title={i18n.t('anotherGender.intersexTraits')}>
-          {hasIntersexTraits !== null ? (
+        <Cell
+          title={i18n.t('anotherGender.intersexTraits')}
+          onPress={openIntersexTraitsPicker}
+        >
+          {intersexTraits ? (
             <Traits
               value={
-                hasIntersexTraits
+                intersexTraits === IntersexTraits.Y
                   ? i18n.t('common.yes')
-                  : hasIntersexTraits === undefined
-                  ? i18n.t('anotherGender.idRatherNotSay')
-                  : i18n.t('common.no')
+                  : intersexTraits === IntersexTraits.N
+                  ? i18n.t('common.no')
+                  : i18n.t('anotherGender.idRatherNotSay')
               }
-              clear={clearintersexTraits}
+              clear={clearIntersexTraits}
             />
           ) : null}
         </Cell>
       </Section>
+      <BottomModal
+        ref={bottomModalRef}
+        snapPoints={['30%']}
+        style={{ paddingTop: 20 }}
+        handleComponent={null}
+      >
+        <Text style={styles.textHeader}>
+          {i18n.t('anotherGender.doYouHaveAnIntersex')}
+        </Text>
+        <Radio
+          value={intersexTraits}
+          options={INTERSEX_TRAITS_OPTIONS}
+          onOptionChosen={handleIntersexTraits}
+        />
+      </BottomModal>
     </SafeAreaView>
   );
 };

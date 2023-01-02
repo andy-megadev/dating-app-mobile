@@ -23,7 +23,8 @@ const AuthStack = () => {
     presentation: 'card',
     animationEnabled: true,
     animationTypeForReplace: 'push',
-    headerShown: false
+    headerShown: false,
+    gestureEnabled: false
   };
 
   return (
